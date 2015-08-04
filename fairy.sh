@@ -69,12 +69,12 @@ MEMCACHED_IPC_SOCKET_PATH="/tmp/memcached.sock"
 
 # configurable parameters
 
-SITENAME='akashmitra.com'
-SITEUSER='akashmitra'
+SITENAME='espannoncements.com'
+SITEUSER='hamik112'
 # sample value of the below variable can be 'files' or 'memcached' etc.
-PHP_SESSION_HANDLER="files"
+PHP_SESSION_HANDLER="memcached"
 # leave this variable blank if you wish memcached to use Unix domain socket
-MEMCACHED_TCP_PORT="29216" 
+MEMCACHED_TCP_PORT="" 
 # Specify PHP session.save_path when PHP_SESSION_HANDLER is neither files or 
 # memcached. This can be left empty if PHP_SESSION_HANDLER is files or memcached
 SESSION_SAVE_PATH=""
@@ -481,22 +481,6 @@ chmod 0700 /root/create_database.sh
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #                             INSTALL JOOMLA                                  #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
-info "Installing CMS - Joomla"
-info "... downloading package"
-cd ${WEBROOT}/${SITENAME}/public_html
-curl --remote-name --silent --retry 3 --retry-delay 5 http://joomlacode.org/gf/download/frsrelease/19393/158832/Joomla_3.3.0-Stable-Full_Package.zip
-If_Error_Exit "Failed to download Joomla"
-info "... downloading unzipping tool"
-aptitude --assume-yes --quiet install unzip
-If_Error_Exit "Failed to install [unzip]"
-info "... unzipping joomla package"
-unzip ${WEBROOT}/${SITENAME}/public_html/Joomla_3.3.0-Stable-Full_Package.zip
-If_Error_Exit "Failed to unzip Joomla package"
-info "... changing owner of CMS files"
-chown ${SITEUSER}:${SITEUSER} ${WEBROOT}/${SITENAME}/public_html/*
-gather "CMS (Joomla) installed. Visit http://${SITENAME} for installation"
-
 
 
 
